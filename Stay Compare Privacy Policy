@@ -1,0 +1,30 @@
+StayCompare for Trip
+
+Extension v1.1.0
+
+Effective November 14, 2026
+
+Privacy Policy
+StayCompare for Trip is designed with strict data minimization. All page parsing runs locally in your browser, and no personal information, browsing history, or user profiles are collected or transmitted to developer-operated servers.
+
+01. Information We Do Not Collect
+StayCompare for Trip does not collect, store remotely, sell, or share personally identifiable information, account credentials, payment details, IP logs, analytics telemetry, or cross-site browsing history. There are no third-party analytics SDKs, advertising trackers, or remote code loaders inside the extension package.
+
+02. Local Page Processing
+When you visit a hotel detail page on Booking.com, Agoda, or Expedia, the content script reads only the visible property heading (<h1>), city/address hint, check-in/check-out stay parameters, and sticky-bar coordinates in memory to render the floating comparison banner without covering site controls.
+To resolve canonical Trip.com hotel detail pages, the extension queries Trip.com directly with the extracted hotel name and city hint, and caches only the resulting numeric Trip.com property ID locally in chrome.storage.local.
+
+03. Permissions & Browser Storage
+Permission / Host	Scope	Purpose
+activeTab	Toolbar popup only	Reads the current tab URL solely when you click the StayCompare toolbar icon so popup.html can indicate whether the page is a supported Booking.com, Agoda, or Expedia hotel listing.
+storage	chrome.storage.local	Caches resolved Trip.com hotel IDs and city IDs locally on your device for up to 7 days to minimize repeat lookups. Page-level banner dismissals are stored only in browser sessionStorage.
+https://*.trip.com/*	Background service worker	Allows background.js to resolve canonical Trip.com property IDs matching the hotel heading you are viewing so the "Check Rate" link lands directly on the matching hotel detail page.
+booking.com · agoda.com · expedia.*	Content script matches	Injects content.js and styles.css exclusively on hotel detail paths (/hotel/* or *Hotel-Information*) to extract the visible <h1> hotel name, stay dates/guests, and sticky-bar geometry.
+
+04. Affiliate Link Disclosure
+Links opened via the banner's Check Rate button are clearly labeled Affiliate link and include Trip.com partner attribution parameters (Allianceid=5047778, SID=95351684, and a session-generated trip_sub3 identifier). Clicking these links incurs no additional cost to you; when you open Trip.com, Trip.com's own privacy policy governs activity on their website.
+
+05. Data Retention & Contact
+Because no user data is transmitted to developer servers, you have full control over local browser data at all times: clearing site data removes dismissal state, and uninstalling StayCompare for Trip immediately deletes all cached hotel IDs in chrome.storage.local.
+
+For privacy questions or Chrome Web Store review inquiries, contact kamalsinghal10@gmail.com.
